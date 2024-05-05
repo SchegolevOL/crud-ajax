@@ -32,6 +32,7 @@
 
 
     <!-- Modal -->
+   <!-- Add-->
     <div class="modal fade" id="addCity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -41,16 +42,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form method="post" id="addCityForm">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="addName" class="form-label">Name</label>
+                                <input type="text" name="name" class="form-control" id="addName" placeholder="City name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="addPopulation" class="form-label">Population</label>
+                                <input type="number" name="population" class="form-control" id="addPopulation"
+                                       placeholder="City population">
+                                <input type="hidden" name="addCity">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="btn-add-submit">Save</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
+
             </div>
         </div>
     </div>
-
+<!--Edit-->
     <div class="modal fade" id="editCity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -60,22 +75,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form method="post" id="editCityForm">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="editName" class="form-label">Name</label>
+                                <input type="text" name="name" class="form-control" id="editName" placeholder="City name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPopulation" class="form-label">Population</label>
+                                <input type="number" name="population" class="form-control" id="editPopulation"
+                                       placeholder="City population">
+                                <input type="hidden" name="editCity">
+                                <input type="hidden" name="id" id="id">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="btn-edit-submit">Save</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
+
             </div>
         </div>
     </div>
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/main.js"></script>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/main.js"></script>
+
 </html>
 
