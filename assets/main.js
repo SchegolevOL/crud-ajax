@@ -24,7 +24,7 @@ divTable.addEventListener('click', (e) => {
                 });
         }
     }
-console.log('ok')
+
     //Get city for edit
     if (e.target.classList.contains('btn-edit')){
         let id = +e.target.dataset.id;
@@ -42,6 +42,36 @@ console.log('ok')
                         document.getElementById('editName').value=data.city.name;
                         document.getElementById('editPopulation').value=data.city.population;
                         document.getElementById('id').value=data.city.id;
+                    }
+                });
+        }
+    }
+//Delete City
+    if (e.target.classList.contains('btn-delete')){
+        let id = +e.target.dataset.id;
+        if (id){
+            fetch('actions.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: id, action: 'delete_city'
+                })
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.answer === 'success'){
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: data.answer,
+                                title: data.answer,
+                                html: data?.errors,
+                            });
+                            if (data.answer === 'success') {
+                                let tr = document.getElementById(`city-${id}`);
+                                tr.remove();
+                            }
+
+
+                        }, 1000);
                     }
                 });
         }
@@ -69,9 +99,10 @@ addCityForm.addEventListener('submit', (e) => {
                 });
                 if (data.answer === 'success') {
                     addCityForm.reset();
+                }
                     btnAddSubmit.textContent = 'Save';
                     btnAddSubmit.disabled = false;
-                }
+
             }, 1000);
 
         });
@@ -111,4 +142,5 @@ editCityForm.addEventListener('submit', (e) => {
 
         });
 });
+//Delete city
 
